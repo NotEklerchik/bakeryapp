@@ -2,10 +2,20 @@ package com.bakeryteam.bakeryapp.sql;
 
 import java.sql.*;
 
-abstract class AbstractTableController {
-    protected static Connection DataBaseConnection = establishNewConnection();
+abstract public class AbstractTableController {
+    protected static Connection DataBaseConnection;
 
-    protected ResultSet resultSet;
+    public static void init() {
+        DataBaseConnection = establishNewConnection();
+    }
+
+    public static void closeConnection() {
+        try {
+            DataBaseConnection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     protected static Connection establishNewConnection() {
         String url = "jdbc:postgresql://26.145.103.85:5432/bakerydb";
@@ -22,7 +32,7 @@ abstract class AbstractTableController {
         }
 
         if (connection != null) {
-            System.out.println("You successfully connected to database now");
+            System.out.println("Successfully connected to database");
         } else {
             System.out.println("Failed to make connection to database");
         }
@@ -38,23 +48,6 @@ abstract class AbstractTableController {
     protected static ResultSet executeQueryStatement(String query) throws SQLException {
         Statement statement = DataBaseConnection.createStatement();
         return statement.executeQuery(query);
-    }
-
-    protected int executeInsert() throws SQLException {
-        return -1;
-    }
-    protected int executeUpdate() throws SQLException {
-        return -1;
-    }
-    protected int executeDelete() throws SQLException {
-        return -1;
-    }
-    protected ResultSet executeSelect() throws SQLException {
-        return null;
-    }
-
-    protected ResultSet getResultSet() {
-        return resultSet;
     }
 
 
