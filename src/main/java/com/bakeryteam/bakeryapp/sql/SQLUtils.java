@@ -1,4 +1,6 @@
-package com.bakeryteam.bakeryapp.sql.util;
+package com.bakeryteam.bakeryapp.sql;
+
+import com.bakeryteam.bakeryapp.sql.AbstractTableController;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +25,25 @@ public class SQLUtils {
 
         return strings;
     }*/
+
+    public static boolean isServerConnected() throws SQLException {
+        return AbstractTableController.getDataBaseConnection().isValid(30);
+    }
+
+    public static boolean updateConnection(){
+        AbstractTableController.closeConnection();
+        if (AbstractTableController.init()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean closeConnection(){
+        AbstractTableController.closeConnection();
+        AbstractTableController.init();
+        return true;
+    }
 
     public static Map<Integer, String> ResultSetToStringMap(ResultSet resultSet) throws SQLException {
         Map<Integer, String> ret = new HashMap<>();

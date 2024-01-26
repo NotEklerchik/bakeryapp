@@ -5,8 +5,10 @@ import java.sql.*;
 abstract public class AbstractTableController {
     protected static Connection DataBaseConnection;
 
-    public static void init() {
+    public static boolean init() {
+
         DataBaseConnection = establishNewConnection();
+        return DataBaseConnection != null;
     }
 
     public static void closeConnection() {
@@ -50,5 +52,7 @@ abstract public class AbstractTableController {
         return statement.executeQuery(query);
     }
 
-
+    protected static Connection getDataBaseConnection() {
+        return DataBaseConnection;
+    }
 }

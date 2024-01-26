@@ -1,11 +1,7 @@
 package com.bakeryteam.bakeryapp;
 
-import com.bakeryteam.bakeryapp.sql.CustomersTableController;
 import com.bakeryteam.bakeryapp.sql.UserdataTableController;
-import com.bakeryteam.bakeryapp.sql.util.SQLUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -30,7 +26,7 @@ public class LoginController {
                 if(rememberMe.isSelected()) {
                     welcomeText.setText("Success. Remembered.");
                 }
-                BakeryApplication.switchStage("info_menu.fxml", true);
+                BakeryApplication.switchStage("info_menu", 1000, 500);
             } else {
                 welcomeText.setText("Failed.");
             }

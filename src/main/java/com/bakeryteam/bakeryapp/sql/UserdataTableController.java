@@ -20,7 +20,7 @@ public class UserdataTableController extends AbstractTableController {
 
     public static synchronized boolean findUserAndPassword(String password, String username) throws SQLException {
         ResultSet resultSet = executeQueryStatement(
-                String.format("SELECT * FROM \"UserData\" WHERE \"Username\" = '%s' AND \"Password\" = '%s';",
+                String.format("SELECT * FROM \"UserData\" WHERE \"UserName\" = '%s' AND \"Password\" = '%s';",
                 password, username));
         return resultSet.next() != false;
     }

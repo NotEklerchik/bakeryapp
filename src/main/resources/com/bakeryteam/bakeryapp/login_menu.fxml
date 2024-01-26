@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
 <VBox alignment="TOP_CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.bakeryteam.bakeryapp.LoginController">
     <padding>
@@ -16,10 +17,10 @@
 
     <Label fx:id="welcomeText"/>
     <TextField promptText="Username" maxWidth="150" fx:id = "username"/>
-    <TextField promptText="Password" maxWidth="150" fx:id = "password"/>
+    <PasswordField promptText="Password" maxWidth="150" fx:id = "password"/>
     <CheckBox text="Remember me" fx:id = "rememberMe"/>
     <Group>
-        <Button text="Log in" onAction="#onLoginButtonClick"/>
+        <Button text="Log in" onAction="#onLoginButtonClick" fx:id = "loginButton"/>
         <Button text="Register" layoutX="60"/>
     </Group>
 </VBox>
